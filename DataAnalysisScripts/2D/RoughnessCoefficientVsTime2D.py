@@ -3,9 +3,9 @@
 """
 
 Script to calculate the average roughness as a function of time of the two-dimensional 
-film using simulation data.
+film using simulation data.  This version writes the (t,Ra) data to a file.
 
-Date: 6/5/2017 7:55
+Date: 6/14/2017 7:55
 
 @author: Karee Hustedde
 @author: Chris Wentworth
@@ -143,6 +143,9 @@ def getEqualy(yxCells,yi1,yi2):
     return equalyList
 
 # Main program
+outFile = open('RCData.txt','w')
+
+# Establish data file name
 fileLoc = 'agent_State.zip'
 arc = zf.ZipFile(fileLoc,'r')
 arc.extractall()
@@ -160,6 +163,13 @@ for f in recordNames:
 for f in recordNames:
     os.remove(f)
 
+# Write roughness coefficient to file
+outFile.write('Roughness Coefficient - Time\n')
+outFile.write('t [hour]   RC \n')
+numValues = len(timeArray)
+for t in range(numValues):
+    outFile.write(' %6.1f    %10.4f\n' % (timeArray[t],AveRCArray[t]) )
+outFile.close()
 plt.plot(timeArray, AveRCArray)
 plt.xlabel('Time\nHours')
 plt.ylabel(' Roughness\nCoefficient')
