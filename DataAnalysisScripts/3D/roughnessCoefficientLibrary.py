@@ -134,6 +134,12 @@ def getGridData(fileName):
     nK = int(grid.attrib['nK'])    
     return resolution, nI,nJ,nK
 
+def getSimulationData(fileName):
+    tree = ET.parse(fileName)   
+    simulation = tree.find(".//simulation")
+    time = float(simulation.attrib['time'])
+    return time
+
 def getSpeciesData(fileName,speciesName):
     '''
     This function reads the text data corresponding to the species

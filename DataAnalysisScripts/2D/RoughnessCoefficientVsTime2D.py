@@ -3,9 +3,9 @@
 """
 
 Script to calculate the average roughness as a function of time of the two-dimensional 
-film using simulation data.  This version writes the (t,Ra) data to a file.
+film using simulation data.
 
-Date: 6/14/2017 7:55
+Date: 6/5/2017 7:55
 
 @author: Karee Hustedde
 @author: Chris Wentworth
